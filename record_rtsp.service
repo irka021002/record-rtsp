@@ -1,0 +1,9 @@
+[Unit]
+Description=Menjalankan Recording RTSP
+
+[Service]
+ExecStart=/bin/bash -c "cd home/rastek/record-rtsp && venv/rtsp/bin/python main.py"
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
