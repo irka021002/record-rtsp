@@ -1,0 +1,7 @@
+// change this file to JSON
+{
+    "fps": 10, //fps for video recording
+    "path": "./target/", //path to save the video
+    "source": "rtsp://admin:UQUTUI@10.50.0.23/cam/realmonitor?channel=1&subtype=00", //source of the video
+    "duration": 10 //duration of the recording
+}
