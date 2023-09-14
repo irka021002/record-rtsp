@@ -12,7 +12,7 @@ if __name__ == "__main__":
     cap = cv2.VideoCapture(config["videoSource"])
     size = (int(cap.get(3)), int(cap.get(4)))
     
-    result = cv2.VideoWriter("{}{}.avi".format(config["filePath"],tanggal.strftime("%d-%m-%Y %H%M%S")), cv2.VideoWriter_fourcc(*'MJPG'), 10, size)
+    result = cv2.VideoWriter("{}{}.avi".format(config["filePath"],tanggal.strftime("%d-%m-%Y %H:%M:%S")), cv2.VideoWriter_fourcc(*'MJPG'), 10, size)
     
     while(cap.isOpened()):
         ret, frame = cap.read()
@@ -21,7 +21,7 @@ if __name__ == "__main__":
             print("Video tersave")
             tanggal = datetime.datetime.now()
             result.release()
-            result = cv2.VideoWriter("{}{}.avi".format(config["filePath"],tanggal.strftime("%d-%m-%Y %H%M%S")), cv2.VideoWriter_fourcc(*'MJPG'), 10, size)
+            result = cv2.VideoWriter("{}{}.avi".format(config["filePath"],tanggal.strftime("%d-%m-%Y %H:%M:%S")), cv2.VideoWriter_fourcc(*'MJPG'), 10, size)
             start = time.time()
         else:
             result.write(frame)
