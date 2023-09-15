@@ -2,3 +2,4 @@ config.json
 target
 venv
 video
+__pycache__

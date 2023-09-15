@@ -3,8 +3,8 @@ import datetime
 import time
 from sys import platform
 
-class ComvisRecord:
-    source = ""
+class ComvisRecorder:
+    source = 0
     fps = 10
     path = ""
     duration = 10
@@ -12,35 +12,20 @@ class ComvisRecord:
     cap = cv2.VideoCapture(source)
     size = (int(cap.get(3)), int(cap.get(4)))
     
-    def __init__(self, source):
-        self.source = source
-        self.cap = cv2.VideoCapture(self.source)
-        self.size = (int(self.cap.get(3)), int(self.cap.get(4)))
-    
-    def __init__(self, source, fps):
-        self.source = source
-        self.fps = fps
-        self.cap = cv2.VideoCapture(self.source)
-        self.size = (int(self.cap.get(3)), int(self.cap.get(4)))
-    
-    def __init__(self, source, fps, path):
-        self.source = source
-        self.fps = fps
-        self.path = path
-        self.cap = cv2.VideoCapture(self.source)
-        self.size = (int(self.cap.get(3)), int(self.cap.get(4)))
-    
     def __init__(self, source, fps, path, duration):
         self.source = source
         self.fps = fps
         self.path = path
         self.duration = duration
-        self.cap = cv2.VideoCapture(self.source)
+        self.cap = self.createCapture(self.source)
         self.size = (int(self.cap.get(3)), int(self.cap.get(4)))
+    
+    def createCapture(self, source):
+        return cv2.VideoCapture(source)
     
     def setSource(self, source):
         self.source = source
-        self.cap = cv2.VideoCapture(self.source)
+        self.cap = self.createCapture(self.source)
         self.size = (int(self.cap.get(3)), int(self.cap.get(4)))
     
     def setDuration(self, duration):
@@ -79,5 +64,4 @@ class ComvisRecord:
     
     def stop(self):
         self.cap.release()
-        cv2.destroyAllWindows()
         
